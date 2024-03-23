@@ -1,0 +1,6 @@
+#dirs
+CarrierBundles/Default.bundle
+depcontainer/Payload
+depcontainer/misc
+depcontainer/tmp
+depcontainer/tools
