@@ -52,6 +52,8 @@ git clone https://github.com/mast3rz3ro/imobilecfbm
 ## References:
 * [ipcc-downloader](https://github.com/mrlnc/ipcc-downloader) another bundles downloader by @mrlnc this repo contains some good info.
 * [jailbreak10.3.3](https://github.com/WRFan/jailbreak10.3.3) a great repo by @WRFan contains too much info about carrier bundles.
+* [CarrierBundle](https://theapplewiki.com/wiki/Carrier_Bundle) More info about carrier bundles by TheAppleWiki
+* [samsam123](https://samsam123.name.my/ipcc/generate.php) Online website for fetching carrier Bundles.
 
 ## Credits
 * [plget](https://github.com/kallewoof/plget) a lightweight PLIST parser
