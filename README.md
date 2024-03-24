@@ -24,7 +24,7 @@ libimobiledevice-utils
 2. Install required dependancy:
 ```shell
 brew install libimobiledevice \
-brew install libplist
+libplist
 ```
 3. Clone this repo
 
@@ -33,13 +33,23 @@ brew install libplist
 git clone https://github.com/mast3rz3ro/imobilecfbm
 ```
 
+**How to run?**
+```shell
+$ cd imobilecfbm
+$ chmod +x cfbm.sh
+$ ./cfbm.sh
+
+# If you have installed the required dependancy then you should be able to see the menu
+# otherwise it's will warn you that you are missing one of the dependancy.
+```
+
 ## Usage examples:
 **- Examples:**
 ```shell
   # Update local database and check latest carrier bundles available for download:
-     cfbm -u -d -p
+     cfbm -u -d
   # Idenify the carrier bundle from local storage and repack it:
-     cfbm -i 'file.ipcc' 'folder_contains_ipcc' 'folder_contains_ipcc_files'
+     cfbm -i 'file.ipcc' 'folder_contains_ipcc_files'
   # Search and Install a carrier bundle matches the connected device bundle version:
      cfbm -s
   # Search and Install a valid carrier bundle with 'default.bundle' payload name:

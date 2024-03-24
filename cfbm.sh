@@ -23,9 +23,9 @@ usage (){
 
  - Examples:
     Update local database and check latest carrier bundles available for download:
-     cfbm -u -d -p
+     cfbm -u -d
     Idenify the carrier bundle from local storage and repack it:
-     cfbm -i 'file.ipcc' 'folder_contains_ipcc' 'folder_contains_ipcc_files'
+     cfbm -i 'file.ipcc' 'folder_contains_ipcc_files'
     Search and Install a carrier bundle matches the connected device bundle version:
      cfbm -s
     Search and Install a valid carrier bundle with 'default.bundle' payload name:
@@ -276,7 +276,7 @@ fi
 get_bundles_update (){
 		# get latest bundle db
 		
-		printf -- '- Downloading carrier bundles database...'
+		printf -- '- Updating carrier bundles database...\n'
 		curl -s 'https://s.mzstatic.com/version' -o './depcontainer/bundles_db_new.xml'
 if [ -s './depcontainer/bundles_db_new.xml' ]; then
 	if [ "$(tail -n +212440 'depcontainer/bundles_db_new.xml' | grep -o '</plist>')" = '</plist>' ]; then
