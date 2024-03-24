@@ -36,13 +36,13 @@ git clone https://github.com/mast3rz3ro/imobilecfbm
 ## Usage examples:
 **- Examples:**
 ```shell
-    Update local database and check latest carrier bundles available for download:
+  # Update local database and check latest carrier bundles available for download:
      cfbm -u -d -p
-    Idenify the carrier bundle from local storage and repack it:
+  # Idenify the carrier bundle from local storage and repack it:
      cfbm -i 'file.ipcc' 'folder_contains_ipcc' 'folder_contains_ipcc_files'
-    Search and Install a carrier bundle matches the connected device bundle version:
+  # Search and Install a carrier bundle matches the connected device bundle version:
      cfbm -s
-    Search and Install a valid carrier bundle with 'default.bundle' payload name:
+  # Search and Install a valid carrier bundle with 'default.bundle' payload name:
      cfbm -s -p 1
 ```
 
