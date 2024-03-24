@@ -79,12 +79,13 @@ get_info (){
 		# output config
 		if [ -z "$output" ]; then output='./CarrierBundles'; fi # output directory
 		ipcc_dir=""$output"/"$bundle".bundle/"$ver"/" # place to store ipcc
-		if [ ! -d "$ipcc_dir" ]; then mkdir -p "$ipcc_dir"; fi
-		if [ ! -d "$output" ]; then mkdir -p "$output"; fi  # create output folder
+		if [ ! -d "$ipcc_dir" ]; then mkdir -p "$ipcc_dir"; fi # create output folder
 		if [ ! -d './depcontainer/tmp/' ]; then mkdir -p './depcontainer/tmp/'; fi
 		if [ ! -d './depcontainer/Payload/' ]; then mkdir -p './depcontainer/Payload/'; fi
 		if [ "$payload_method" = '0' ]; then payload="$bundle.bundle"; fi
 		if [ ! -d "./depcontainer/Payload/$payload" ]; then mkdir -p "./depcontainer/Payload/$payload"; fi
+		export ipcc_bundle="$ipcc_bundle"
+		export ipcc_dir="$ipcc_dir"
 }
 
 gen_ipcc (){
@@ -205,7 +206,16 @@ else
 	printf -- '- Could not find a carrier-bundle matches current connected device.\n'
 	exit 100
 fi
+	if [ ! -z "$payload_method" ]; then
+		output='./depcontainer/misc/tmp'
+		gen_ipcc "$ipcc_bundle"
+		ipcc_bundle="$ipcc_dir""$ipcc_bundle"
+	fi
+	if [ ! -z "$ipcc_bundle" ]; then
+		printf -- "- Payload name: '$payload'\n"
 		"$ideviceinstaller" install "$ipcc_bundle" # install ipcc
+		rm -rf './depcontainer/misc/tmp/'
+	fi
 }
 
 get_bundle_down (){
