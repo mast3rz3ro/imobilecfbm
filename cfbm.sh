@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 usage (){
 		printf -- " iMobile Carrier-Bundles Manager 1.0
