@@ -50,7 +50,7 @@ git clone https://github.com/mast3rz3ro/imobilecfbm
 * Please open a new ticket [here](https://github.com/mast3rz3ro/imobilecfbm/issues) and describe your issue as much as possible.
 
 ## References:
-* [ipcc-downloader](https://github.com/mrlnc/ipcc-downloader) by @mrlnc another bundles manager and repo contains some good info.
+* [ipcc-downloader](https://github.com/mrlnc/ipcc-downloader) another bundles downloader by @mrlnc this repo contains some good info.
 * [jailbreak10.3.3](https://github.com/WRFan/jailbreak10.3.3) a great repo by @WRFan contains too much info about carrier bundles.
 
 ## Credits
