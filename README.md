@@ -6,7 +6,7 @@
 
 **Windows users:**
 1. Install [MSYS2](https://www.msys2.org)
-2. Get latest precompiled [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) from [here](https://github.com/L1ghtmann/libimobiledevice/releases) and then extract the binaries into: `C:\mmsys64\usr\bin`
+2. Get latest precompiled [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) from [here](https://github.com/L1ghtmann/libimobiledevice/releases) and then extract the binaries into: `C:\msys64\usr\bin`
 3. Install required dependancy: `pacman -S git`
 4. Clone this repo
 
