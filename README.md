@@ -52,6 +52,7 @@ git clone https://github.com/mast3rz3ro/imobilecfbm
 ## References:
 * [ipcc-downloader](https://github.com/mrlnc/ipcc-downloader) another bundles downloader by @mrlnc this repo contains some good info.
 * [jailbreak10.3.3](https://github.com/WRFan/jailbreak10.3.3) a great repo by @WRFan contains too much info about carrier bundles.
+* [anchumosaku](https://anchumosaku.com/how-to-use-rakuten-mobile-with-an-unsupported-iphone/) a great tutorial by @liathfeth about extracting and repacking the carrier bundle.
 * [CarrierBundle](https://theapplewiki.com/wiki/Carrier_Bundle) More info about carrier bundles by TheAppleWiki
 * [samsam123](https://samsam123.name.my/ipcc/generate.php) Online website for fetching carrier Bundles.
 
