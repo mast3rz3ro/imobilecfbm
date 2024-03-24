@@ -35,14 +35,16 @@ git clone https://github.com/mast3rz3ro/imobilecfbm
 
 ## Usage examples:
 **- Examples:**
-*    Update local database and check latest carrier bundles available for download:
-*     cfbm -u -d -p
-*    Idenify the carrier bundle from local storage and repack it:
-*     cfbm -i 'file.ipcc' 'folder_contains_ipcc' 'folder_contains_ipcc_files'
-*    Search and Install a carrier bundle matches the connected device bundle version:
-*     cfbm -s
-*    Search and Install a valid carrier bundle with 'default.bundle' payload name:
-*     cfbm -s -p 1
+```shell
+    Update local database and check latest carrier bundles available for download:
+     cfbm -u -d -p
+    Idenify the carrier bundle from local storage and repack it:
+     cfbm -i 'file.ipcc' 'folder_contains_ipcc' 'folder_contains_ipcc_files'
+    Search and Install a carrier bundle matches the connected device bundle version:
+     cfbm -s
+    Search and Install a valid carrier bundle with 'default.bundle' payload name:
+     cfbm -s -p 1
+```
 
 ## Where to get support?
 * Please open a new ticket [here](https://github.com/mast3rz3ro/imobilecfbm/issues) and describe your issue as much as possible.
@@ -55,6 +57,6 @@ git clone https://github.com/mast3rz3ro/imobilecfbm
 * [plget](https://github.com/kallewoof/plget) a lightweight PLIST parser
 * [libplist](https://github.com/libimobiledevice/libplist) used for force converting PLIST file into xml.
 * [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) Used for installing carrier-bundles and more.
-* [L1ghtmann](https://github.com/L1ghtmann/libimobiledevice), for providing a precompiled libimobiledevice binaries for windows.
+* [L1ghtmann](https://github.com/L1ghtmann/libimobiledevice) for providing a precompiled libimobiledevice binaries for windows.
 * [MSYS2](https://www.msys2.org) an alternative to Cygwin but better.
 * [brew](https://brew.sh) a package manager same like apt/pacman but for macOS.
