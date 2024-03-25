@@ -6,9 +6,10 @@
 
 **Windows users:**
 1. Install [MSYS2](https://www.msys2.org)
-2. Get latest precompiled [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) from [here](https://github.com/L1ghtmann/libimobiledevice/releases) and then extract the binaries into: `C:\msys64\usr\bin`
-3. Install required dependancy: `pacman -S git`
-4. Clone this repo
+2. Get the latest precompiled [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) from [here](https://github.com/L1ghtmann/libimobiledevice/releases) and then extract the binaries into: `C:\msys64\usr\bin`
+3. Get the latest precompiled [plget](https://github.com/kallewoof/plget) from [here](https://github.com/mast3rz3ro/plget/releases) and then extract the binaries into: `C:\msys64\usr\bin` *Important note: Don't replace any file If already exist !*
+4. Install required dependancy: `pacman -S git`
+5. Clone this repo
 
 **Linux users:**
 1. Install required dependancy:
@@ -17,16 +18,19 @@ sudo apt install git \
 libplist-utils \
 libimobiledevice-utils
 ```
-2. Clone this repo
+2. Follow the instructions here [plget](https://github.com/kallewoof/plget) for compiling plget utility.
+3. After you have compiled plget you either have to set the variable plget via `export plget=/home/location/plget` or you can avoid always exporting the plget variable by simply copying the plget binary into: `/usr/bin`.
+4. Clone this repo
 
 **macOS users:**
 1. Install [brew](https://brew.sh)
 2. Install required dependancy:
 ```shell
-brew install libimobiledevice \
-libplist
+brew install libimobiledevice libplist
 ```
-3. Clone this repo
+3. Follow the instructions here [plget](https://github.com/kallewoof/plget) for compiling plget utility.
+4. After you have compiled plget make sure to always set the variable plget via `export plget=/home/location/plget`
+5. Clone this repo
 
 **Cloning repo:**
 ```shell
@@ -39,7 +43,7 @@ $ cd imobilecfbm
 $ chmod +x cfbm.sh
 $ ./cfbm.sh
 
-# If you have installed the required dependancy then you should be able to see the menu
+# If you have installed the required dependancy then you should be able to see the parameters options
 # otherwise it's will warn you that you are missing one of the dependancy.
 ```
 
