@@ -113,16 +113,16 @@ gen_ipcc (){
 		#####################################
 		printf -- '- Searching for CarrierBundles ...\n'
 for i in "$@"; do # process passed single or multi file(s)
-	if [ -s "$i" ]; then
+	if [ -f "$i" ] && [ -s "$i" ]; then
 			x="$i"
 			bundle_type='1'; set_process_bundle # call function
-	elif [ -d "$i" ] && [ -z "$cbundle_name_mode" ]; then # proces pass directories contains file(s)
+	elif [ -d "$i" ] && [ -z "$cbundle_name_mode" ]; then # proces passed directories contains file(s)
 		find "$i" -type f \( -name '*.ipcc' -o -name 'carrier.plist' \) -print0 | 
 			while IFS= read -r -d '' line; do
-		if [ "$(printf -- "$line" | grep -o 'ipcc' | sed -n 1p)" = 'ipcc' ]; then
+		if [ "$(printf -- "$line" | grep -oF '.ipcc' | sed -n 1p)" = 'ipcc' ]; then
 			x="$line"
 			bundle_type='1'; set_process_bundle # call function
-		elif [ "$(printf -- "$line" | grep -o 'carrier.plist' | sed -n 1p)" = 'carrier.plist' ]; then # process all
+		elif [ "$(printf -- "$line" | grep -oF 'carrier.plist' | sed -n 1p)" = 'carrier.plist' ]; then # process all
 			x="$(printf -- "$line" | sed 's\/carrier.plist\\')"
 			bundle_type='2'; set_process_bundle # call function
 		fi
@@ -132,7 +132,7 @@ for i in "$@"; do # process passed single or multi file(s)
 		for c in $cbundle_name; do
 		find "$i" -type d -name "$c" -print0 | 
 			while IFS= read -r -d '' line; do
-		if [ "$(printf -- "$line" | grep -o "$c" | sed -n 1p)" = "$c" ]; then # process only required
+		if [ "$(printf -- "$line" | grep -oF "$c" | sed -n 1p)" = "$c" ]; then # process only required
 			x="$line"
 			bundle_type='2'; set_process_bundle # call function
 		fi
@@ -167,16 +167,16 @@ if [ -s "$line" ]; then
 fi
 done
 elif [ "$bundle_type" = '2' ]; then
-		pattern="$x/info.plist"
+		pattern="$x/Info.plist"
 		pattern2="$x"
 		get_info # call function
 	if [ ! -s "$ipcc_dir""$ipcc_bundle" ]; then
 		printf -- "- Processing: '$ipcc_bundle'\n"
 		rm -Rf './depcontainer/Payload/'*
 		cp -Rf "$x/." "./depcontainer/Payload/$payload"
-		find './depcontainer/Payload' -exec touch -t '202401010700' {} \;
-		find './depcontainer/Payload' -exec chmod 000 {} \;
-		$(cd 'depcontainer'; zip -Xqr "$ipcc_bundle" 'Payload'; cd './') # Include parenthesis so cd does not affect your current terminal
+		find './depcontainer/Payload' -mindepth 1 -exec touch -t '202401010700' {} \;
+		find './depcontainer/Payload' -mindepth 1 -exec chmod 744 {} \;
+		$(cd 'depcontainer'; zip -Xqr "$ipcc_bundle" 'Payload'; cd './') # run in sub-shell so cd does not affect current shell
 		mv -f "depcontainer/$ipcc_bundle" "$ipcc_dir""$ipcc_bundle"
 	elif [ -s "$ipcc_dir""$ipcc_bundle" ]; then
 		printf -- "- Bundle exist: '"$ipcc_dir""$ipcc_bundle"'\n"
@@ -190,8 +190,8 @@ set_install (){
 		# install ipcc into connected device
 
 		printf -- '- Reading connected device info ...\n'
-		hw_model="$("$ideviceinfo" -s | grep 'HardwareModel' | awk -F 'HardwareModel: ' '{print $2}')"; hw_model="${hw_model:0:3}"
-		cfb_ver=$("$ideviceinfo" | grep 'CFBundleVersion' | awk -F 'CFBundleVersion: ' '{print $2}')
+		hw_model="$("$ideviceinfo" -s | grep -F 'HardwareModel' | awk -F 'HardwareModel: ' '{print $2}')"; hw_model="${hw_model:0:3}"
+		cfb_ver=$("$ideviceinfo" | grep -F 'CFBundleVersion' | awk -F 'CFBundleVersion: ' '{print $2}')
 if [ ! -z "$hw_model" ] && [ ! -z "$cfb_ver" ]; then
 		printf -- "- AutoMode: Hardware:'$hw_model' CFBundleVersion:'$cfb_ver'\n"
 select list in $(find 'CarrierBundles' -type f -name "*$cfb_ver*$hw_model*") exit; do
@@ -279,7 +279,7 @@ get_bundles_update (){
 		printf -- '- Updating carrier bundles database...\n'
 		curl -s 'https://s.mzstatic.com/version' -o './depcontainer/bundles_db_new.xml'
 if [ -s './depcontainer/bundles_db_new.xml' ]; then
-	if [ "$(tail -n +212440 'depcontainer/bundles_db_new.xml' | grep -o '</plist>')" = '</plist>' ]; then
+	if [ "$(tail -n +212440 'depcontainer/bundles_db_new.xml' | grep -oF '</plist>')" = '</plist>' ]; then
 		mv -f 'depcontainer/bundles_db_new.xml' 'depcontainer/bundles_db.xml'
 	fi
 else
