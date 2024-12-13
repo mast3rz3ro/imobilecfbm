@@ -158,7 +158,7 @@ if [ -s "$line" ]; then
 		printf -- "- Processing: '$line'\n"
 		mv -f "$pattern2"* "./depcontainer/Payload/"$payload/"" # rename payload
 		find './depcontainer/Payload' -exec touch -t '202401010700' {} \;
-		find './depcontainer/Payload' -exec chmod 000 {} \;
+		find './depcontainer/Payload' -exec chmod 777 {} \;
 		$(cd 'depcontainer'; zip -Xqr "$ipcc_bundle" 'Payload'; cd './') # Include parenthesis so cd does not affect your current terminal
 		mv -f "depcontainer/$ipcc_bundle" "$ipcc_dir""$ipcc_bundle"
 	elif [ -s "$ipcc_dir""$ipcc_bundle" ]; then
@@ -175,7 +175,7 @@ elif [ "$bundle_type" = '2' ]; then
 		rm -Rf './depcontainer/Payload/'*
 		cp -Rf "$x/." "./depcontainer/Payload/$payload"
 		find './depcontainer/Payload' -mindepth 1 -exec touch -t '202401010700' {} \;
-		find './depcontainer/Payload' -mindepth 1 -exec chmod 744 {} \;
+		find './depcontainer/Payload' -mindepth 1 -exec chmod 777 {} \;
 		$(cd 'depcontainer'; zip -Xqr "$ipcc_bundle" 'Payload'; cd './') # run in sub-shell so cd does not affect current shell
 		mv -f "depcontainer/$ipcc_bundle" "$ipcc_dir""$ipcc_bundle"
 	elif [ -s "$ipcc_dir""$ipcc_bundle" ]; then
